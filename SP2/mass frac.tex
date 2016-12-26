@@ -113,7 +113,6 @@ where $D_{\text{core}}$ is the mean diameter of BC core,$D_{\text{mixed}}$ is th
 
  
 \section{Compute Volume Fraction Corresponding to Lognormal Distribution}
-
 The CDF of number distribution in the size range between $d_{1}$ and $d_{2}$ is:
 \begin{align*}
 N(d_{1}, d_{2}) = \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r),
@@ -122,12 +121,12 @@ where $r_{g}$ is mean geometric diameter (extracted from model, varying temporal
 
 \noindent The mean volume is proportional to function of the form:
 \begin{align*}
-N(d_{1}, d_{2}) &= \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r)  \\
+V(d_{1}, d_{2}) &= \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r)  \\
 &=\frac{e^{\frac{k^2}{2}\text{ln}^2\sigma_{g}+k\text{ln}r_{g}}}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{\text{gv}})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r),
 \end{align*}
 where the volume mean diameter is of the form $\text{lnr}_{\text{gv}} = \text{lnr}_{\text{g}} + 3\text{ln}\sigma_{\text{g}}$.
 
-\noindent So BC mass fraction (in the size range between 90--400~nm) in a mode (Figure~\ref{fig_P1}) is derived by:
+\noindent So BC mass fraction (in the size range between 90--400~nm) in a mode is derived by:
 
 \begin{align*}
 F(\text{d}_{1}, \text{d}_{2}) &= \frac{\frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r)}
@@ -137,10 +136,23 @@ F(\text{d}_{1}, \text{d}_{2}) &= \frac{\frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{
 &=\frac{1}{2}[\text{erf}(\frac{\text{ln}d_{2} - \text{ln}r_{\text{gv}}}{\sqrt{2}\text{ln}\sigma})-\text{erf}(\frac{\text{ln}d_{1} - \text{ln}r_{\text{gv}}}{\sqrt{2}\text{ln}\sigma})],
 \end{align*}
 
+
+
+
+\bigskip
+\bigskip
+\bigskip
+\begin{figure}[!h] 
+	\begin{center}
+		\includegraphics[width = 0.6\textwidth]{Rplot01}
+		\caption[]{\label{fig_P1}BC mass in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
+	\end{center}
+\end{figure}
+
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics[width = 0.6\textwidth]{Rplot02}
-		\caption[]{\label{fig_P1} BC mass fraction ($\%$) (between 90 and 400~nm) in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
+		\caption[]{\label{fig_P2} BC mass fraction ($\%$) (between 90 and 400~nm) in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
 	\end{center}
 \end{figure}
 
@@ -152,25 +164,21 @@ f_{\text{pc}} = \frac{F_{\text{pc}}(d_{1}, d_{2})M_{\text{pc}}}{F_{\text{accu}}(
 \end{align*}
 \[f_{\text{accu}} + f_{\text{pc}} = 1,\]
 
-\noindent where $f_{\text{accu}}$ is the fraction of BC mass in accumulation mode, $f_{\text{pc}}$ is the fraction of BC mass in primary carbon mode (Figure~\ref{fig_P2}), $M_{\text{accu}}$ and $M_{\text{pc}}$ are BC mass in accumulation mode and primary carbon mode respectively.
+\noindent where $f_{\text{accu}}$ is the fraction of BC mass in accumulation mode, $f_{\text{pc}}$ is the fraction of BC mass in primary carbon mode, $M_{\text{accu}}$ and $M_{\text{pc}}$ are BC mass in accumulation mode and primary carbon mode respectively.
 
-\noindent In figure 2, 
+\noindent BC mass fraction ($F_{\text{pc}}(90~nm, 400~nm)$ and $F_{\text{accu}}(90~nm, 400~nm)$) are shown in Figure~\ref{fig_P2}, for primary carbon mode (upper panel) and for accumulation mode (lower panel). At the surface, SP2 would see most of BC in primary carbon mode at high latitudes ($\textgreater$60$\%$). At low and middle latitudes, this portion is lower than 40$\%$ for most regions. SP2 can capture most of BC in accumulation mode when it is distant from source regions (e.g., throughout the oceans). We also observe that little BC could be seen in either mode for Central Africa. Fractions in two panels should not add up to 1.
 
-\noindent Figure~\ref{fig_P3} shows monthly BC mass concentration for March.
+\noindent $f_{\text{pc}}$ and $f_{\text{accu}}$ are shown in the upper and lower panels in Figure~\ref{fig_P3} respectively. They indicate the mixing state of BC particles that can be captured by SP2 measurements. Most of them ($\textgreater$60$\%$) are internally mixed in low and middle latitudes, and are externally mixed in high latitudes. The fraction can vary spatially for Arctic region (between 40$\%$ and 70$\%$), which should be taken into consideration when comparing modeled BC with SP2 measurements. Fractions in two panels should add up to 1. 
+
 
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics[width = 0.6\textwidth]{Rplot03}
-		\caption[]{\label{fig_P2} Ratio of BC mass ($\%$) within SP2 size range to total BC mass within SP2 size range, in primary carbon mode (top) and accumulation mode (bottom), for surface layer, March.}
+		\caption[]{\label{fig_P3} Ratio of BC mass ($\%$) within SP2 size range to total BC mass within SP2 size range, in primary carbon mode (top) and accumulation mode (bottom), for surface layer, March.}
 	\end{center}
 \end{figure}
 
-\begin{figure}[!h] 
-	\begin{center}
-		\includegraphics[width = 0.6\textwidth]{Rplot04}
-		\caption[]{\label{fig_P3}BC mass concentration, for surface layer, March.}
-	\end{center}
-\end{figure}
+
 
 
 
@@ -179,9 +187,10 @@ f_{\text{pc}} = \frac{F_{\text{pc}}(d_{1}, d_{2})M_{\text{pc}}}{F_{\text{accu}}(
 
 C. L. Reddington, G. McMeeking, G. W. Mann1, H. Coe, M. G. Frontoso, D. Liu, M. Flynn, D. V. Spracklen, and K. S. Carslaw: The mass and number size distributions of black carbon aerosol over Europe, Atmos. Chem. Phys., 13, 4917-4939, doi:10.5194/acp-13-4917-2013, 2013
 
+Liu, X., Easter, R. C., Ghan, S. J., Zaveri, R., Rasch, P., Shi, X., Lamarque, J.-F., Gettel- man, A., Morrison, H., Vitt, F., Conley, A., Park, S., Neale, R., Hannay, C., Ekman, A. M. L., Hess, P., Mahowald, N., Collins, W., Iacono, M. J., Bretherton, C. S., Flanner, M. G., and Mitchell, D.: Toward a minimal representation of aerosols in climate models: description and evaluation in the Community Atmosphere Model CAM5, Geosci. Model Dev., 5, 709–739, doi:10.5194/gmd-5-709-2012, 2012.
+
 Schwarz, J. P., Spackman, J. R., Gao, R. S., Perring, a. E., Cross, E., Onasch, T. B., Ahern, a., Wrobel, W., Davidovits, P., Olfert, J., Dubey, M. K., Mazzoleni, C., and Fahey, D. W.: The Detection Efficiency of the Single Particle Soot Photometer, Aerosol Sci. Technol., 44, 612–628, doi:10.1080/02786826. 2010.481298, 2010a.
 
-Liu, X., Easter, R. C., Ghan, S. J., Zaveri, R., Rasch, P., Shi, X., Lamarque, J.-F., Gettel- man, A., Morrison, H., Vitt, F., Conley, A., Park, S., Neale, R., Hannay, C., Ekman, A. M. L., Hess, P., Mahowald, N., Collins, W., Iacono, M. J., Bretherton, C. S., Flanner, M. G., and Mitchell, D.: Toward a minimal representation of aerosols in climate models: description and evaluation in the Community Atmosphere Model CAM5, Geosci. Model Dev., 5, 709–739, doi:10.5194/gmd-5-709-2012, 2012.
 
 
 
