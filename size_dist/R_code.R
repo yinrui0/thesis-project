@@ -5,8 +5,8 @@ cat("\014")
 imput1 <- read.csv("diameters_ln_intervals_2014.csv", skip=16, header = FALSE)
 
 #read dN/dlnp
-imput2 <- read.csv("size_distributions__2014_06.csv", skip = 16, header = FALSE)
-num <- 4029
+imput2 <- read.csv("size_distributions__2014_09.csv", skip = 16, header = FALSE)
+num <- 3544
 
 #read diameter
 imput3 <- read.csv("diameters_ln_intervals_2014.csv", skip=14, nrows=1, header = FALSE)
@@ -30,7 +30,7 @@ mu <- dndlnp %*% PP
 mu
 myData <- data.frame(imput2$V1,imput2$V3, mu)
 colnames(myData) <- c("date","julday","mean diameter")
-write.csv(myData, file = "mu_2014_06.csv")
+write.csv(myData, file = "mu_2014_09.csv")
   
   
   
