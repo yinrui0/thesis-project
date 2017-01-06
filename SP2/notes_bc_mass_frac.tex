@@ -1,21 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[11pt]{article}
 
 \usepackage[numbers,square]{natbib}
-\renewcommand\cite[1]{(\citet{#1})}
-\usepackage
-[
-        a4paper,% other options: a3paper, a5paper, etc
-        left=2cm,
-        right=2.5cm,
-        top=3cm,
-        bottom=4cm,
-        % use vmargin=2cm to make vertical margins equal to 2cm.
-        % us  hmargin=3cm to make horizontal margins equal to 3cm.
-        % use margin=3cm to make all margins  equal to 3cm.
-]
-{geometry}
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
 \usepackage{color}
 \usepackage{chemarr}
 \usepackage{amssymb}
@@ -26,6 +13,7 @@
 \usepackage[margin=1.5cm]{caption}
 \usepackage{amsmath,mathtools}
 \usepackage{subcaption}
+\usepackage{ulem}
 %\setlength{\belowcaptionskip}{-5pt}
 %\setlength{\abovecaptionskip}{-8pt}
 \usepackage{enumitem}
@@ -56,7 +44,7 @@
   stringstyle=\color{ForestGreen} % string literal style
 }
 
-
+\newcommand{\nrtodo}[1]{{\color{blue} NR: #1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{\textbf{Comparing BC mixing state from CAMChem to SP2 measurements}}
@@ -75,18 +63,50 @@
 
 \section{SP2 Measurement} 
 
-The SP2 instrument measures BC particles in the diameter range from approximately 90 to 400~nm, which is unlikely to represent the total ambient number and mass concentrations of BC (Reddington et al., 2013). 
-In order to compare CAMChem model simulated BC with observations, we estimated the mass fraction of modeled BC in the size range (90--400~nm) corresponding to SP2 measurement.
+The SP2 instrument measures BC particles in the diameter range from
+approximately 90 to 400~nm, which is unlikely to represent the total
+ambient number and mass concentrations of BC (Reddington et al.,
+2013).  In order to compare CAMChem model simulated BC with
+observations, we estimated the mass fraction of modeled BC in the size
+range (90--400~nm) corresponding to SP2 measurement.
 
-
+\nrtodo{Need to fix up citations. You need a file called refs.bib,
+  which I committed to the repo and add your references there. I've
+  put in an example. You cite a paper like this:
+  \citet{Reddington2013} or this: \citep{Reddington2013}.  Then you
+  need to run ``bibtex'' on the file, then ``latex'' (probably
+  twice).}
  
 \section{Estimating the mean BC core diameter in primary carbon mode and in accumulation mode} 
 
-A 4-mode version of the modal aerosol model (MAM4) is applied in CAMChem1.2.2. BC is emitted to the primary carbon mode, and then is transferred to the accumulation mode by condensation of $\rm{H_2SO_4}$, $\rm{NH_3}$ and $\rm{SOA}$ and by coagulation (Liu et al., 2012). In primary carbon mode, particles consist of externally mixed BC and OC, whereas in accumulation mode, particles consist of internally mixed BC and non-BC material.
+A 4-mode version of the modal aerosol model (MAM4) is applied in
+CAMChem1.2.2. BC is emitted to the primary carbon mode, and then is
+transferred to the accumulation mode by condensation of
+$\rm{H_2SO_4}$, $\rm{NH_3}$ and $\rm{SOA}$ and by coagulation (Liu et
+al., 2012). In primary carbon mode, particles consist of externally
+mixed BC and OC, whereas in accumulation mode, particles consist of
+internally mixed BC and non-BC material.
+
+\nrtodo{Don't use bigskip and noindent. If you want to make a new paragraph, just add a blank line.
+
+  like this. Latex does the rest for you.}
+
+\bigskip 
+\noindent SP2 measures the mass size distribution of the BC particle
+cores over a calibrated volume equivalent diameter (VED) range of
+55--400~nm, and the number-detection efficiency at sea level pressure
+is reported to be one for BC above 90~nm VED (Schwarz et al.,
+2010a). So following Reddington et al., 2013, we use 90~nm as the
+lower bound here.
 \bigskip
-\noindent SP2 measures the mass size distribution of the BC particle cores over a calibrated volume equivalent diameter (VED) range of 55--400~nm, and the number-detection efficiency at sea level pressure is reported to be one for BC above 90~nm VED (Schwarz et al., 2010a). So following Reddington et al., 2013, we use 90~nm as the lower bound here. 
-\bigskip
-\noindent Both modes assume lognormal distribution as is shown in table 1. $\sigma_{g}$ is fixed but geometric mean diameter can change according to total mass and total number of aerosol particles in that mode.
+\noindent Both modes assume lognormal distribution as is shown in
+table 1 \nrtodo{refer to tables (and figures) by using their
+  labels. like this: Table~\ref{tab:mam4_modes}}. \nrtodo{Don't start
+  a sentence with a variable. Say: The geometric standard deviation
+  $\sigma_{\rm g}$ .... note that the subscript ``g'' is not in
+  italics.} $\sigma_{g}$ is fixed but geometric mean diameter can
+change according to total mass and total number of aerosol particles
+in that mode.
 
 \begin{table}
 	\begin{center}
@@ -98,7 +118,12 @@ A 4-mode version of the modal aerosol model (MAM4) is applied in CAMChem1.2.2. B
 			\hline			
 		\end{tabular}
 	\end{center}
-\caption{\label{tab:ozone} Parameters of Lognormal Distribution.}
+\caption{\label{tab:ozone} Parameters of Lognormal
+  Distribution. \nrtodo{add the source here (i.e. these are the
+    percentiles from somebody's simulation, not yours, right? $\rm \mu
+    m$ should be not italics. I would call the first column MAM4
+    mode. To indicate a range use ``--'', not ``-''. Remove vertical lines in
+    table. } \label{tab:mam4_modes}}
 \end{table}
 
 
@@ -107,13 +132,17 @@ A 4-mode version of the modal aerosol model (MAM4) is applied in CAMChem1.2.2. B
 \begin{align*}
 D_{\text{core}} = (D_{\text{mixed}}^3 \times f_{\text{BC}})^\frac{1}{3}, 
 \end{align*}
-where $D_{\text{core}}$ is the mean diameter of BC core,$D_{\text{mixed}}$ is the mean diameter of internally mixed particles (\textbf{extracted from model}), and $f_{\text{BC}}$ is the volume fraction of BC in accumulation mode.
-
+where $D_{\text{core}}$ is the mean diameter of BC core,
+$D_{\text{mixed}}$ is the mean diameter of internally mixed particles
+(\textbf{extracted from model}), and $f_{\text{BC}}$ is the volume
+fraction of BC in accumulation mode.  \nrtodo{where is the core
+  diameter used in the derivations below?}
 
 
  
-\section{Compute Volume Fraction Corresponding to Lognormal Distribution}
-The CDF of number distribution in the size range between $d_{1}$ and $d_{2}$ is:
+\section{Compute Volume Fraction \sout{Corresponding to} \nrtodo{within size range} for a Lognormal Distribution}
+The CDF of number distribution in the size range between $d_{1}$ and
+$d_{2}$ is \nrtodo{Use consistently either radius or diameter.}:
 \begin{align*}
 N(d_{1}, d_{2}) = \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r),
 \end{align*}
@@ -124,9 +153,13 @@ where $r_{g}$ is mean geometric diameter (extracted from model, varying temporal
 V(d_{1}, d_{2}) &= \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r)  \\
 &=\frac{e^{\frac{k^2}{2}\text{ln}^2\sigma_{g}+k\text{ln}r_{g}}}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{\text{gv}})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r),
 \end{align*}
-where the volume mean diameter is of the form $\text{lnr}_{\text{gv}} = \text{lnr}_{\text{g}} + 3\text{ln}\sigma_{\text{g}}$.
+where the volume mean diameter is of the form $\text{lnr}_{\text{gv}}
+= \text{lnr}_{\text{g}} + 3\text{ln}\sigma_{\text{g}}$ \nrtodo{$r$ is
+  a variable here, so make it italics}.
 
-\noindent So BC mass fraction (in the size range between 90--400~nm) in a mode is derived by:
+\noindent So BC mass fraction (in the size range between 90--400~nm)
+in a mode is derived by \nrtodo{the formula below is still general for
+  $d_1, d_2$}:
 
 \begin{align*}
 F(\text{d}_{1}, \text{d}_{2}) &= \frac{\frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}r^3e^-\frac{(\text{ln}r - \text{ln}r_{g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}r)}
@@ -145,7 +178,7 @@ F(\text{d}_{1}, \text{d}_{2}) &= \frac{\frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics[width = 0.6\textwidth]{Rplot01}
-		\caption[]{\label{fig_P1}BC mass in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
+		\caption[]{\label{fig_P1}BC mass in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March. \nrtodo{use the variables for BC mass in the modes here as well.}}
 	\end{center}
 \end{figure}
 
@@ -156,6 +189,7 @@ F(\text{d}_{1}, \text{d}_{2}) &= \frac{\frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{
 	\end{center}
 \end{figure}
 
+\nrtodo{Discussion of Figure 1?}
 
 \noindent \textbf{Within the size range (90--400~nm)}, the ratio of BC mass in each mode to total BC mass is computed as:
 \begin{align*}
@@ -164,11 +198,34 @@ f_{\text{pc}} = \frac{F_{\text{pc}}(d_{1}, d_{2})M_{\text{pc}}}{F_{\text{accu}}(
 \end{align*}
 \[f_{\text{accu}} + f_{\text{pc}} = 1,\]
 
-\noindent where $f_{\text{accu}}$ is the fraction of BC mass in accumulation mode, $f_{\text{pc}}$ is the fraction of BC mass in primary carbon mode, $M_{\text{accu}}$ and $M_{\text{pc}}$ are BC mass in accumulation mode and primary carbon mode respectively.
+\noindent where $f_{\text{accu}}$ is the fraction of BC mass in
+accumulation mode, $f_{\text{pc}}$ is the fraction of BC mass in
+primary carbon mode, $M_{\text{accu}}$ and $M_{\text{pc}}$ are BC mass
+in accumulation mode and primary carbon mode respectively.
 
-\noindent BC mass fraction ($F_{\text{pc}}(90~nm, 400~nm)$ and $F_{\text{accu}}(90~nm, 400~nm)$) are shown in Figure~\ref{fig_P2}, for primary carbon mode (upper panel) and for accumulation mode (lower panel). At the surface, SP2 would see most of BC in primary carbon mode at high latitudes ($\textgreater$60$\%$). At low and middle latitudes, this portion is lower than 40$\%$ for most regions. SP2 can capture most of BC in accumulation mode when it is distant from source regions (e.g., throughout the oceans). We also observe that little BC could be seen in either mode for Central Africa. Fractions in two panels should not add up to 1.
+\noindent BC mass fraction ($F_{\text{pc}}(90~nm, 400~nm)$ and
+$F_{\text{accu}}(90~nm, 400~nm)$) \nrtodo{``nm'' should be not
+  italics} are shown in Figure~\ref{fig_P2}, for primary carbon mode
+(upper panel) and for accumulation mode (lower panel). At the surface,
+SP2 would \sout{see} \nrtodo{be able to detect} most of BC in primary
+carbon mode at high latitudes ($\textgreater$60$\%$).  At low and
+middle latitudes, this portion is lower than 40$\%$ for most
+regions. SP2 can capture most of BC in accumulation mode when it is
+distant from source regions (e.g., throughout the oceans). We also
+observe that little BC could be seen in either mode for Central
+Africa. \nrtodo{and why is that?} Fractions in two panels should not
+add up to 1. \nrtodo{move the last sentence to a bit earlier, where
+  you define the quantities.}
 
-\noindent $f_{\text{pc}}$ and $f_{\text{accu}}$ are shown in the upper and lower panels in Figure~\ref{fig_P3} respectively. They indicate the mixing state of BC particles that can be captured by SP2 measurements. Most of them ($\textgreater$60$\%$) are internally mixed in low and middle latitudes, and are externally mixed in high latitudes. The fraction can vary spatially for Arctic region (between 40$\%$ and 70$\%$), which should be taken into consideration when comparing modeled BC with SP2 measurements. Fractions in two panels should add up to 1. 
+\noindent $f_{\text{pc}}$ and $f_{\text{accu}}$ are shown in the upper
+and lower panels in Figure~\ref{fig_P3} respectively. \nrtodo{comma
+  before respectively} They indicate the mixing state of BC particles
+that can be captured by SP2 measurements. Most of them
+($\textgreater$60$\%$) are internally mixed in low and middle
+latitudes, and are externally mixed in high latitudes. The fraction
+can vary spatially for Arctic region (between 40$\%$ and 70$\%$),
+which should be taken into consideration when comparing modeled BC
+with SP2 measurements. Fractions in two panels should add up to 1.
 
 
 \begin{figure}[!h] 
@@ -191,8 +248,9 @@ Liu, X., Easter, R. C., Ghan, S. J., Zaveri, R., Rasch, P., Shi, X., Lamarque, J
 
 Schwarz, J. P., Spackman, J. R., Gao, R. S., Perring, a. E., Cross, E., Onasch, T. B., Ahern, a., Wrobel, W., Davidovits, P., Olfert, J., Dubey, M. K., Mazzoleni, C., and Fahey, D. W.: The Detection Efficiency of the Single Particle Soot Photometer, Aerosol Sci. Technol., 44, 612–628, doi:10.1080/02786826. 2010.481298, 2010a.
 
-
-
+\nrtodo{This is how you include references. Latex does the rest automatically!}
+\bibliographystyle{plain-local-srefid}
+\bibliography{refs}
 
 
 
