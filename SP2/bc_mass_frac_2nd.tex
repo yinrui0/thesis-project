@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[11pt]{article}
 
-\usepackage[numbers,square]{natbib}
+\usepackage[authoryear]{natbib}
 \usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
 \usepackage{color}
 \usepackage{chemarr}
@@ -78,18 +78,13 @@ $\rm{H_2SO_4}$, $\rm{NH_3}$ and $\rm{SOA}$ and by coagulation \citep{Liu2012}. I
 mixed BC and OC, whereas in accumulation mode, particles consist of
 internally mixed BC and non-BC material.
 
-\nrtodo{Don't use bigskip and noindent. If you want to make a new paragraph, just add a blank line.
-
-  like this. Latex does the rest for you.}
-
-\bigskip 
-\noindent SP2 measures the mass size distribution of the BC particle
+SP2 measures the mass size distribution of the BC particle
 cores over a calibrated volume equivalent diameter (VED) range of
 55--400~nm, and the number-detection efficiency at sea level pressure
 is reported to be one for BC above 90~nm VED \citep{Schwarz2010a}. So following Reddington et al., 2013, we use 90~nm as the
 lower bound here.
-\bigskip
-\noindent Both modes assume lognormal distribution as is shown in
+
+Both modes assume lognormal distribution as is shown in
 Table~\ref{tab:mam4_modes}. The geometric standard deviation $\sigma_{\rm g}$ is fixed but geometric mean diameter can
 change according to total mass and total number of aerosol particles
 in that mode.
@@ -108,15 +103,14 @@ in that mode.
 \end{table}
 
 
-\bigskip
-\noindent The mean BC core diameter in accumulation mode is interpreted as:
+The mean BC core diameter in accumulation mode is interpreted as:
 \begin{align*}
 d = (d_{\text{mixed}}^3 \times f_{\text{BC}})^\frac{1}{3}, 
 \end{align*}
 where $d$ is the mean diameter of BC core,
 $d_{\text{mixed}}$ is the mean diameter of internally mixed particles
 (\textbf{extracted from model}), and $f_{\text{BC}}$ is the volume
-fraction of BC in accumulation mode. For estimates of volume fraction within SP2 measurement size range, we refers to BC particle diameter as its core diameter.
+fraction of BC in accumulation mode. For the following estimation of volume fraction within SP2 measurement size range, we refers to BC particle diameter as its core diameter.
 
 \section{Compute Volume Fraction within size range for a Lognormal Distribution}
 The CDF of lognormal number distribution in the geometric diameter range between $d_{1}$ and
@@ -126,7 +120,7 @@ N(d_{1}, d_{2}) = \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d
 \end{align*}
 where $d_{\rm g}$ is mean geometric diameter of BC core (extracted from model, varying temporally and spatially). 
 
-\noindent The mean volume is proportional to $V(d_{1}, d_{2})$:
+The mean volume is proportional to $V(d_{1}, d_{2})$:
 \begin{align*}
 V(d_{1}, d_{2}) &= \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}d^3e^-\frac{(\text{ln}d - \text{ln}d_{\rm g})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}d)  \\
 &=\frac{e^{\frac{k^2}{2}\text{ln}^2\sigma_{\rm g}+k\text{ln}d_{\rm g}}}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{d_{2}}d^3e^-\frac{(\text{ln}d - \text{ln}d_{\text{gv}})^2}{2\text{ln}^2\sigma_{\text{g}}}\text{d}(\text{ln}d),
@@ -134,7 +128,7 @@ V(d_{1}, d_{2}) &= \frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_{1}}^{
 where the volume mean diameter is represented as $\text{ln}d_{\text{gv}}
 = \text{ln}d_{\text{g}} + 3\text{ln}\sigma_{\text{g}}$
 
-\noindent So BC mass fraction (in the size range between 90--400~nm)
+So BC mass fraction (in the size range between 90--400~nm)
 in a mode is derived as:
 
 \begin{align*}
@@ -148,40 +142,37 @@ F(d_{1}, d_{2}) &= \frac{\frac{1}{\text{ln}\sigma_{\text{g}}\sqrt{2\pi}}\int_{d_
 \[F_{\text{accu}}(d_{1}, d_{2}) + F_{\text{pc}}(d_{1}, d_{2}) \neq 1,\]
 BC mass fraction for primary carbon mode ($F_{\text{pc}}(90~\text{nm}, 400~\text{nm})$) and for accumulation mode ($F_{\text{accu}}(90~\rm nm, 400~\rm nm)$) do not add up to 1.
 
-\bigskip
-\bigskip
-\bigskip
+
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics[width = 0.6\textwidth]{Rplot01}
-		\caption[]{\label{fig_P1}BC mass in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March. \nrtodo{use the variables for BC mass in the modes here as well.}}
+		\caption[]{\label{fig_P1}BC mass mixing ratio ($M_{\rm pc}$ and $M_{\rm accu}$) in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
 	\end{center}
 \end{figure}
 
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics[width = 0.6\textwidth]{Rplot02}
-		\caption[]{\label{fig_P2} BC mass fraction ($\%$) (between 90 and 400~nm) in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
+		\caption[]{\label{fig_P2} BC mass fraction between 90 and 400~nm ($F_{\rm pc}$ and $F_{\rm accu}$) in primary carbon mode (top) and in accumulation mode (bottom), for surface layer, March.}
 	\end{center}
 \end{figure}
 
-\nrtodo{Discussion of Figure 1?}
 
-\noindent \textbf{Within the size range (90--400~nm)}, the ratio of BC mass in each mode to total BC mass is computed as:
+\textbf{Within the size range (90--400~nm)}, the ratio of BC mass in each mode to total BC mass is computed as:
 \begin{align*}
 f_{\text{accu}} = \frac{F_{\text{accu}}(d_{1}, d_{2})M_{\text{accu}}}{F_{\text{accu}}(\text{d}_{1}, d_{2})M_{\text{accu}}+F_{\text{pc}}(d_{1}, d_{2})M_{\text{pc}}}\\
 f_{\text{pc}} = \frac{F_{\text{pc}}(d_{1}, d_{2})M_{\text{pc}}}{F_{\text{accu}}(d_{1}, d_{2})M_{\text{accu}}+F_{\text{pc}}(d_{1}, d_{2})M_{\text{pc}}}
 \end{align*}
 \[f_{\text{accu}} + f_{\text{pc}} = 1,\]
 
-\noindent where $f_{\text{accu}}$ is the fraction of BC mass in
+where $f_{\text{accu}}$ is the fraction of BC mass in
 accumulation mode, $f_{\text{pc}}$ is the fraction of BC mass in
 primary carbon mode, $M_{\text{accu}}$ and $M_{\text{pc}}$ are BC mass
 in accumulation mode and primary carbon mode, respectively.
 
-\noindent Generally, BC mass spreads out more broadly in accumulation mode ($M_{\text{accu}}$) than in primary carbon mode ($M_{\text{pc}}$) (Figure~\ref{fig_P1}). For some Arctic regions, BC in primary carbon mode can be observed higher than BC in accumulation mode, probably due to some local emission sources.
+Generally, BC mass spreads out more broadly in accumulation mode ($M_{\text{accu}}$) than in primary carbon mode ($M_{\text{pc}}$) (Figure~\ref{fig_P1}). For some Arctic regions, BC in primary carbon mode can be observed higher than BC in accumulation mode, probably due to some local emission sources.
 
-\noindent BC mass fraction within SP2 size range ($F_{\text{pc}}(90~\text{nm}, 400~\text{nm})$ and
+BC mass fraction within SP2 size range ($F_{\text{pc}}(90~\text{nm}, 400~\text{nm})$ and
 $F_{\text{accu}}(90~\rm nm, 400~\rm nm)$) are shown in Figure~\ref{fig_P2}, for primary carbon mode
 (upper panel) and for accumulation mode (lower panel). At the surface,
 SP2 would be able to detect most of BC in primary
@@ -192,7 +183,7 @@ distant from source regions (e.g., throughout the oceans). We also
 observe that little BC could be seen in either mode for Central
 Africa. \nrtodo{and why is that?} 
 
-\noindent $f_{\text{pc}}$ and $f_{\text{accu}}$ are shown in the upper
+$f_{\text{pc}}$ and $f_{\text{accu}}$ are shown in the upper
 and lower panels in Figure~\ref{fig_P3}, respectively. They indicate the mixing state of BC particles
 that can be captured by SP2 measurements. Most of them
 ($\textgreater$60$\%$) are internally mixed in low and middle
@@ -205,7 +196,7 @@ with SP2 measurements. Fractions in two panels should add up to 1.
 \begin{figure}[!h] 
 	\begin{center}
 		\includegraphics[width = 0.6\textwidth]{Rplot03}
-		\caption[]{\label{fig_P3} Ratio of BC mass ($\%$) within SP2 size range to total BC mass within SP2 size range, in primary carbon mode (top) and accumulation mode (bottom), for surface layer, March.}
+		\caption[]{\label{fig_P3} Ratio of BC mass within SP2 size range to total BC mass within SP2 size range ($f_{\rm pc}$ and $f_{\rm accu}$), in primary carbon mode (top) and accumulation mode (bottom), for surface layer, March.}
 	\end{center}
 \end{figure}
 
