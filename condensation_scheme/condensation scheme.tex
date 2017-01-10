@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[authoryear]{natbib} 
+
+
+\begin{document}
+\title{Sulfate Condensation Scheme in MAM4}
+\author{}
+\date{\today}
+\maketitle
+
+\begin{ }
+  A 4-mode version of the modal aerosol model (MAM4) is applied in CAMChem1.2.2. BC is emitted to the primary carbon mode, and then is aged and transferred to the accumulation mode by condensation of $\rm{H_2SO_4}$, $\rm{NH_3}$ and $\rm{SOA}$ and by coagulation (Liu et al., 2012). Below is a mathematical explanation of the sulfate condensation scheme.
+  \end{ }
+
+\section{Sulfate Condensation}
+
+	First we compute how much $\rm{H_2SO_4}$ is condensing on four modes during each timestep. \\
+
+%\begin{description}
+%\item[$F_n$] : uptake of gas going to mode n ($s^{-1}$)
+%\item[$F_{sum}$] : sum of uptake going to all four modes ($s^{-1}$)
+%\item[$f_n$] : fraction of total uptake going to mode n
+%\item[q] : tracer mixing ratio (mol/mol air)
+%\end{description}
+
+
+Gas uptake during $\Delta$ t is:
+\begin{equation}
+\Delta q = q \times (1 - e^{-\Delta t\times F_ {\rm{sum}}})
+\end{equation}
+,and gas uptake going to mode n is:
+\begin{equation}
+\Delta q_n = \Delta q \times f_n
+\end{equation}
+, where q is tracer mixing ratio (mol/mol air), $F_{\rm{sum}}$ is the sum of uptake going to all four modes ($s^{-1}$), $(1 - e^{-\Delta t\times F_{\rm{sum}}})$ is the fraction of gas uptake due to condensation during $\Delta t$, and $f_n$ is the fraction of total uptake going to mode n.
+ 
+
+In order to obtain $F_{\rm{sum}}$ and $f_n$, we need to estimate the uptake of gas going to each mode:
+\begin{equation}
+F_n = \int n(lnD_p)\times C d(lnD_p)
+\end{equation}
+, where $D_p$ is aerosol diameter, $n(lnD_p)$ is lognormal size distribution, and C is sulfuric acid condensation rate:
+\begin{align}
+C = 2\pi \times D_p \times V_{\rm{diff}} \times F(K_n, Ac) \\
+V_{\rm{diff}} = 0.557 \times 10^4 \times 1.75 \times \frac{T}{P} 
+\end{align}
+
+\begin{flushleft}
+$K_n$ : Knudsen number \\
+$A_c$ : accommodation coefficient \\
+$F$ : Fuchs-Sutugin correction factor \\
+$V_{\rm{diff}}$ : gas diffusivity for  $\rm{H_2SO_4}$
+\end{flushleft}
+, $F_{\rm{sum}}$ is then computed by summing $F_n$ over all 4 modes, and $f_n$ is the ratio of $F_n$ to $F_{\rm{sum}}$.
+\begin{align}
+F_{\rm{sum}}  &= \sum_{k=1}^4 F_n          &
+f_n          &= \frac{F_n}{F_{\rm{sum}}} 
+\end{align}
+
+\section{8-monolayer Condensation Shceme}
+In MAM4,  a criterion of 8 monolayers of sulfate is used to compute the aerosol transfer rate from primary carbon mode to accumulation mode. It assumes that BC particle is aged after it is condensed by 8 monolayers of sulfate.The fraction aged over each timestep is estimated as the ratio of the volume of all condensable material to the volume of sulfate required to age all BC particles based on the 8-monolayer scheme. \\
+
+The volume of sulfate condensed on BC particles in primary carbon mode $n_{\rm{pc}}$:
+\begin{align}
+\begin{split}
+V_{\rm{shell}} &=  \Delta q_{\rm{SO_4}, n_{\rm{pc}}} \times V_{\rm{SO_4}} \\
+               &+ \Delta q_{\rm{NH_4}, n_{\rm{pc}}} \times V_{\rm{NH_4}} \\
+	       &+ \Delta q_{\rm{SOA}, n_{\rm{pc}}} \times V_{\rm{SOA}} 
+\end{split}
+\end{align}
+$V_{\rm{SO_4}}$, $V_{\rm{NH_4}}$, and $V_{\rm{SOA}}$ convert mixing ratio to $\rm{m^3/kmol air}$.
+
+The fraction of aerosol being aged is computed as:
+\begin{align}
+\begin{split}
+f_{\rm{age}} &= \frac{V_{\rm{shell}}}{V_{\rm{8-mono}}}  \\
+             &= \frac{\frac{V_{\rm{shell}}}{V_{\rm{core}}}}{(\pi M_2/ \frac{\pi}{6}M_3) \times d_{\rm{8-mono}}}
+\end{split}
+\end{align}
+
+\begin{flushleft}
+$V_{\rm{8-mono}}$: the volume of sulfate required to age all BC particles. \\
+$V_{\rm{core}}$: the volume of pure BC. \\
+$M_2$ $M_3$: second and third moment of  moment dynamic equation, $\pi M_2/ \frac{\pi}{6}M_3$ is the ratio of aerosol surface area to volume. \\
+$d_{\rm{8-mono}}$: thickness of 8 monolayer of sulfate.
+\end{flushleft}
+
+Mass transfer over $\Delta t$ is then represented as:
+\begin{align}
+\Delta q_{n_{\rm{pc}}} &= \Delta q_{n_{\rm{pc}}} - f_{\rm{age}} \times q_{n_{\rm{pc}}}  &&\text{primary carbon mode} \\
+\Delta q_{n_{\rm{accu}}} &= \Delta q_{n_{\rm{accu}}} + f_{\rm{age}} \times q_{\rm{n_{\rm{pc}}}}  &&\text{accumulation mode}
+\end{align}
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}
