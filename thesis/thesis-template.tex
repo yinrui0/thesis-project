@@ -713,8 +713,9 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	Generally, the mixing ratio of BC particles in the accumulation mode ($M_{\text{accu, BC}}$) is higher than that in the primary carbon mode ($M_{\text{pc, BC}}$) when it is distant from the source regions (e.g., Indian Ocean, Atlantic Ocean) (Figure~\ref{fig_R4}), primarily because black carbon will be transfered from the fresh, hydrophobic mode (primary carbon) into the aged, hydrophilic mode (accumulation) during transportation. We also observe that for some Arctic regions (e.g., Greenland), however, BC mixing ratio can be higher in the primary carbon mode than in the accumulation mode.
 	
 	BC mass fractions within the SP2 size range ($F_{\text{pc}}(90~\text{nm}, 400~\text{nm})$ and
-	$F_{\text{accu}}(90~\rm nm, 400~\rm nm)$) are shown in Figure~\ref{fig_R5}. For primary carbon mode
-	(upper panel), SP2 would be able to detect most of BC ($\textgreater$60$\%$) over the ocean and throughout the North Pole, and less of BC ($\textless$40$\%$) in regions like central Africa, Northeast Asia and Australia. For accumulation mode (lower panel), this portion is higher when it is close to the sources (e.g., South East Asia, Europe), and lower at high latitudes. We also observe that the distributions of the above mass fractions (Figure~\ref{fig_R5}) have similar pattern with the size distributions of BC cores (Figure~\ref{fig_R6}), which indicates that the low values of the mass fraction ($F_{\text{pc}}(90~\text{nm}, 400~\text{nm})$ and $F_{\text{accu}}(90~\text{nm}, 400~\text{nm}$) are highly due to the small geometric mean diameter of BC cores ($\textless$90~nm)in that region.
+	$F_{\text{accu}}(90~\rm nm, 400~\rm nm)$) are shown in Figure~\ref{fig_R5}. For March
+	(upper left panel), SP2 would be able to detect most of BC ($\textgreater$60$\%$) over the ocean and throughout the North Pole in primary carbon mode, and less of BC ($\textless$40$\%$) in regions like central Africa, Northeast Asia and Australia. This portion is higher (lower left panel) when it is close to the sources (e.g., South East Asia, Europe), and lower at high latitudes in accumulation mode. For September
+	(upper right panel), however, SP2 can only detect less than $\textgreater$20$\%$ of BC in the Arctic in both modes. We also observe that the distributions of the above mass fractions (Figure~\ref{fig_R5}) have similar pattern with the size distributions of BC cores (Figure~\ref{fig_R6}), which indicates that the low values of the mass fraction ($F_{\text{pc}}(90~\text{nm}, 400~\text{nm})$ and $F_{\text{accu}}(90~\text{nm}, 400~\text{nm}$) are highly due to the small geometric mean diameter of BC cores ($\textless$90~nm)in that region.
 	\begin{figure}[h] 
 		\begin{center}
 			\includegraphics[width = 1\textwidth]{Rplot01}
@@ -738,10 +739,9 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	
 	
 	
-	The ratios of BC mixing ratio in each mode within the SP2 size range to the total BC mixing ratio within the SP2 size range ($f_{\rm pc}$ and $f_{\rm accu}$) are shown in Figure~\ref{fig_R7}, which represents the mixing states of BC particles that are captured by SP2 measurements. Most of them are internally mixed in the low and middle
-	latitudes ($f_{\rm accu}\textgreater$60$\%$), and are externally mixed at high latitudes ($f_{\rm pc}\textgreater$60$\%$). The mixing state can vary spatially in the Arctic region,
-	which should be taken into consideration when comparing modeled BC
-	with SP2 measurements. Fractions in two panels should add up to 1.
+	The ratios of BC mixing ratio in each mode within the SP2 size range to the total BC mixing ratio within the SP2 size range ($f_{\rm pc}$ and $f_{\rm accu}$) are shown in Figure~\ref{fig_R7}, which represents the mixing states of BC particles that are captured by SP2 measurements. In March, most of BC aerosols are internally mixed at low and middle
+	latitudes ($f_{\rm accu}\textgreater$60$\%$), whereas more of them are externally mixed at high latitudes ($f_{\rm pc}\textgreater$60$\%$). In September, the mixing state can vary spatially in the Arctic region. The above results should be taken into consideration when comparing modeled BC
+	with SP2 measurements. Fractions in top and bottom panels should add up to 1.
 	
 	
 	
@@ -792,7 +792,7 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	\begin{figure}[h] 
 		\begin{center}
 			\includegraphics[width = 0.9\textwidth]{Figure24}
-			\caption[]{\label{fig_p24} Volume condensation rate ($I_{\rm cond}$) of sulfate and SOA.}
+			\caption[Volume condensation rate ($I_{\rm cond}$) of sulfate and SOA]{\label{fig_p24} Volume condensation rate ($I_{\rm cond}$) of sulfate and SOA.}
 		\end{center}
 	\end{figure}
 	
@@ -834,6 +834,19 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	
 	
 	\chapter{Summary and Conclusion}
+		In this study, the representation of BC aerosols in CAM--chem MAM4 model has been assessed. Several sensitivity runs were conducted to investigate the extent to which BC burden, mixing states and radiative forcing can be sensitive to the choices of aging parameters. Furthermore, a new method was applied to evaluate the accuracy of BC aging represented in CAM--chem model, by comparing BC aging rates extracted from CAM-chem to aging parameterization based on more detailed particle-resolved simulations with PartMC-MOSAIC. The parameterization were obtained from \cite{Fierce2016}. 
+		
+		We used a 4-mode version of the modal aerosol model (MAM4) in CAM--chem, where the aging process was represented by the conversion of BC aerosol particles from the hydrophobic, primary carbon mode to the hydrophilic, accumulation mode after coating with certain amount of species by coagulation and condensation. In order to explore the model sensitivity to the aging criterion, we conducted four simulations from January 1 2010 to December 31 2010 by setting the threshold coating thickness of 1, 2, 4 and 8 of sulfate to determine the mass transfer rate between the two modes. Generally, increasing the number of mono-layers implies that larger amount of sulfate or SOA will be needed to age the primary carbonaceous particles into accumulation mode. Consequently, particles will stay for longer in the primary carbon (no wet deposition) mode before moving into the accumulation mode (subject to wet deposition), hence BC can transport longer distances. 
+		
+		We explored the sensitivity of BC deposition flux and burden to the aging criterion, and computed the relative differences between two cases (L1 v.s. L8). Both wet and dry scavenging rates are most sensitive to the choices of aging criterion at high latitudes, with the maximum relative differences around 90~$\%$ in the Arctic. A seasonal cycle can be observed. Similarly, we found that BC burden is also most sensitive to the aging criterion at high latitudes where the background concentrations are low, with maximum differences in the annually averaged BC mixing ratio of 16$\%$ near the surface. For Arctic region, the maximum relative differences can be at high altitudes around 400 hPa. We also analyzed the sensitivity of BC radiative forcing to the aging criterion. The magnitude of annually and spatially averaged radiative forcing is 0.18~W$\dot{\text{m}^2}$ in the L1 case, lower than that of 0.48~W$\dot{\text{m}^2}$ in the L8 case because less BC are there with larger number of monolayers, and consequently faster aging and wet deposition. The magnitudes are higher in the main source regions (South East Asia, Europe, South America, Aftica, etc.) with a maximum of around 15~W$\cdot{\text{m}^2}$ in both cases.  
+		
+		The mixing state of BC particles with those hydrophilic aerosol components can affect both their CCN/IN activities and radiative properties and should be of our interest. So we computed BC mass fraction and their mixing states, and focused our study in the Arctic region where the climate is more sensitive to BC concentrations. We found that more than 90~$\%$ of BC particles are in primary carbon mode (externally mixed) and only less than 10~$\%$ of them are in the accumulation mode (internally mixed). We also noticed that SP2 measurements can only catch a portion of BC in both modes because of the detectable size range between 90 and 400~nm. Our results indicated that more than 60~$\%$ of BC particles can be detected in March, whereas only less than 20~$\%$ of them can be detected in September. This result, albeit preliminary, should be taken into consideration when comparing model simulated BC with SP2 observed data in the Arctic, since the discrepancies may be due to the detective efficiency of SP2 measurements. 
+ 
+		Our above results has shown that BC related properties are very sensitive to the choices of aging parameters in the climate model. So it is important to evaluate whether a model representation of BC aging is 'correct'. Currently, limited observed data of aging rates is available, and more generally, it is hard to compare a ‘process’ to observed data. In CAM-chem, the treatment of BC aging is based on simplified assumptions, computing mechanic transfer rates by assuming aerosol size distributions, mixing levels and number--of--monolayer criterion. However, PartMC-MOSAIC model tracks the evolution of individual particles (mass constituent aerosol species), where the processes of advection, diffusion and coagulation are modeled stochastically. It has the advantage that no specific aging criterion assumption is required. So in our study, we implemented a new method by exploiting PartMC-MOSAIC parameterizations based on more detailed particle resolved simulations as reference to evaluate the performance of MAM4 aging scheme. We found that CAM-chem annual aging timescales range from less than one hour to several days, where condensation plays a dominating role. The comparison indicates that PartMC--MOSAIC timescales are broadly consistant with CAM-chem timescales near the surface, whereas are lower than CAM-chem aging timescales in an upper layer (857~hPa), indicating faster aging rates. These results can be used as reference for further CAM-chem model development.
+		
+		This study is mostly based on model simulations. Further work may include comparison between simulated BC burden and mixing states with SP2 data (e.g., HIPPO, FAAM BAe-146, Pallas Global Atmosphere Watch (GAW) ).
+
+	
 	
 	\chapter{Appendix}
 	
