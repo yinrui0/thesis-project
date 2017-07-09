@@ -362,7 +362,7 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 		\end{center}
 	\end{figure}
 	
-	Currently, the condensation of sulfate and ammonia is assumed to be irreversible, whereas the condensation of semi-volatile organics (SOA) can be set to be reversible or irreversible. Sulfate is produced from $\rm{SO}_{2}$ oxidation by OH, based on MOZART treatment \citep{tie2001effects}. An accommodation coefficient (0.65), that is the probability of sticking when the gas molecules encounters the surface of an aerosol particle is used for all the three species \citep{Liu2012}. 
+	Currently, the condensation of sulfate and ammonia is assumed to be irreversible, whereas the condensation of semi-volatile organics (SOA) can be set to be reversible or irreversible. Sulfate is produced either from $\rm{SO}_{2}$ oxidation by OH, based on MOZART treatment or from aqueous oxidation by ozone and $\rm H_{2}O_{2}$ \citep{tie2001effects}. An accommodation coefficient (0.65), that is the probability of sticking when the gas molecules encounters the surface of an aerosol particle is used for all the three species \citep{Liu2012}. 
 	
 	Generally, for each time-step, the model computes the ratio of the condensed soluble species mass in the primary carbon to the mass that is required to age all the particles in that mode based on the monolayer criterion. Then it assumes that the same ratio of the POM and BC in the primary carbon mode is transfered to the accumulation mode together with the condensed materials. Here we provide a detailed mathematical explanations of this model representation of the condensation scheme. 
 	
@@ -405,7 +405,7 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	
 	\begin{align}
 	\begin{split}
-	V_{\rm{8-mono}} = (\pi M_2/ \frac{\pi}{6}M_3) \times d_{\rm{8-mono}},
+	V_{\rm{8-mono}} = \pi M_2 \times d_{\rm{8-mono}},
 	\end{split}
 	\end{align}
 	
@@ -461,7 +461,7 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	The following summarizes the procedure that was applied in \citet{Fierce2016} to obtain the aging timescale parameterization. \citet{Fierce2016} simulated a series of 100 sensitivity particle-resolved scenarios using Latin hypercube sampling to sample the parameter space of the model inputs \citep{mckay1979comparison}. Twenty-eight input parameters were varied to represent a range of atmospheric conditions, from highly polluted cases with consequently rapid aging to remote regions with slow aging. Those parameters included environmental variables, aerosol characteristics, aerosol type and gas emissions. In each scenario, they simulated the evolution of carbonaceous particles that were emitted into a population of background aerosol. No new fresh particle were emitted during this process after the simulation started, in order the isolate the effects of aging \citep{Fierce2016}. The normalized error in the number concentration of CCN computed using the particle-resolved composition that track individual particle and the reduced representation of the composition by assuming different mixing states of aerosol population for a specific scenario q at time t is given by:
 	\begin{align}\label{eq:11}
 	e_{\rm CCN}(t) = \frac{\int_{0}^{\infty}( \tilde{N}_{\rm CCN}(t,s) - 
-		N_{\rm CCN} (t,s))ds}{\int_{0}^{\infty} \tilde{N}_{\rm CCN, q}(t,s)ds},
+		N_{\rm CCN} (t,s))ds}{\int_{0}^{\infty} N_{\rm CCN, q}(t,s)ds},
 	\end{align}
 	where $\tilde{N}_{\rm CCN}(t,s)$ is the number concentration of CCN using the reduced composition at a specific environmental supersaturation $s$ and time $t$，and $N_{\rm CCN}(t,s)$ is the CCN using the particle-resolved composition. This error decreases exponentially with time and a regression result has shown a high R-squared value as 93$\%$. The equation can be expressed as:
 	\begin{align}
@@ -501,7 +501,7 @@ Lastly, I would like to thank my parents for their love and accompany all the ti
 	\clearpage
 	
 	\chapter{Results}
-
+	In this chapter, we will show the sensitivity of BC burden and radiative forcing to the choices of CAM-chem aging parameters. Also, we will assess the mixing states of the species in CAM-chem model and furthermore, BC mass fraction and mixing states that can be captured by SP2 measurements. Finally, the process analysis of BC aging will be discussed.
 	
 	\section{Sensitivity of BC Burden and Radiative Forcing to the Aging Criterion}{\label{sec_1}}
 	To explore the model sensitivity to the aging criterion (see Chapter~\ref{sec_2}), we conducted four experiments at a resolution of $1.9^\circ \times 2.5^\circ$ from January 1 2010 to December 31 2010 with offline meteorology, and set the number of mono-layers to 1, 2, 4 and 8 (default), respectively, abbreviated as L1, L2, L4 and L8. The larger the number of monolayer is, the more coating material is required to transfer the carbonaceous aerosols from the primary carbon mode to the accumulation mode, hence BC will stay longer in the primary carbon mode and the aging rates will be slower. Consequently, the BC concentration will be higher because less BC is transfered to the hydrophilic, accumulation mode that is subject to wet deposition. 
