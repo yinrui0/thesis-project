@@ -9,7 +9,7 @@
 \def\fileversion{v2.25a} \def\filedate{2017/04/10}
 %% Package and Class "uiucthesis2009" for use with LaTeX2e.
 %\documentclass[edeposit,fullpage]{uiucthesis2009}
-\documentclass[12pt, fullpage]{uiucthesis2009}
+\documentclass[12pt, fullpage]{uiucthesis2009_2}
 
 \usepackage{lineno}
 %\linenumbers*[1]
@@ -27,6 +27,7 @@
 
 
 \usepackage[usenames, dvipsnames]{xcolor}
+
 \colorlet{shadecolor}{gray!5}
 \usepackage{listings}
 \lstset{ 
@@ -51,25 +52,23 @@
 	stringstyle=\color{ForestGreen} % string literal style
 }
 
+\begin{document}
 
+\setcounter{page}{1}
+\pagenumbering{roman}
 
-\msthesis
 \title{Sensitivity of Black Carbon Aging to Modeling Assumption in CAM-chem}
 \author{Yinrui Li}
 \department{Atmospheric Sciences}
 \schools{University of Illinois at Urbana-Champaign}
+\msthesis
 \degreeyear{2017}
 \committee{Associate Professor Nicole Riemer\\
 	Professor Donald Wuebbles}
-
-
-
-\begin{document}
-
 \maketitle
 
 \frontmatter
-
+\setcounter{page}{2}
 %% Create an abstract that can also be used for the ProQuest abstract.
 %% Note that ProQuest truncates their abstracts at 350 words.
 \begin{abstract}
